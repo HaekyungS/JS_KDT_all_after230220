@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <h1>그린컴퓨터아트학원 3층 자판기</h1>
+    <div>
+      <h2>밀키스가격</h2>
+      <p>900</p>
+    </div>
+    <div>
+      <h2>코카콜라가격</h2>
+      <p>2800</p>
+    </div>
+    <div>
+      <h2>원장님조르기</h2>
+      <p>0</p>
+    </div>
+    <script>
+      var root = document.getElementById('root');
+      console.log("첫번째 :", root);
+      var milkis = root.children[1];
+      console.log("두번째 :", milkis);
+      var milkisPrice = milkis.children[1].textContent;
+      console.log("세번째 :", milkisPrice);
+      var numberChangeMilkisPrice = Number(milkisPrice);
+      console.log("네번째 :", numberChangeMilkisPrice);
+      console.log("다섯번째 :", typeof(numberChangeMilkisPrice));
+      //typeof : 평가전 자료형을 나타내는 문자열을 반환함.
+      //ex typeof() 안의 값이 숫자면 Number를 반환
+    </script>
+  </div>
+</body>
+</html>

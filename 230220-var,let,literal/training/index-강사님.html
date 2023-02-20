@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <h1>그린컴퓨터아트학원 3층 자판기</h1>
+    <div>
+      <h2>밀키스가격</h2>
+      <p name="mil">900</p>
+    </div>
+    <div>
+      <h2>코카콜라가격</h2>
+      <p name="coke">2800</p>
+    </div>
+    <div>
+      <h2>원장님조르기</h2>
+      <p>0</p>
+    </div>
+  </div>
+  <script>
+    // 1. var coke = 2800;
+    //    var milky = 900;
+    //    console.log(coke-milky);
+    // 2. var result = 2800-900;
+    // 오늘 알려준 수준
+    // 항상 내가 아는 수준까지만 써보는 것 -> 원형을 쓰는 것.
+
+    console.dir(document.getElementById("root").children[1].children[1].textContent);
+    console.dir(document.getElementById("root").children[2].children[1].textContent);
+    console.log(document.getElementById("root").children[1].children[1].textContent-document.getElementById("root").children[2].children[1].textContent)
+
+
+
+  </script>
+</body>
+
+</html>

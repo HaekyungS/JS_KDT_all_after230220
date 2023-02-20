@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <h1>그린컴퓨터아트학원 3층 자판기</h1>
+    <div>
+      <h2>밀키스가격</h2>
+      <p>900</p>
+    </div>
+    <div>
+      <h2>코카콜라가격</h2>
+      <p>2800</p>
+    </div>
+    <div>
+      <h2>원장님조르기</h2>
+      <p>0</p>
+    </div>
+  </div>
+  <script>
+    let coke = document.getElementById('root').children[2].children[1].innerText;
+    let milkies = document.getElementById('root').children[1].children[1].innerText;
+    //inner.Text 는 문자열로 바뀌는거라 비교연산자가 인식이 안되는것임.
+    //확인을 위해 typeof()를 하는 방법이 있고, 하얀색으로 나오는 건 문자임. 숫자는 색생이 있음.
+    //순서를 줘라. 음 으음 음 
+    if (coke < milkies) {
+      console.log(milkies - coke);
+    } else if (coke > milkies) {
+      console.log(coke - milkies);
+    } else {
+      console.log('밀키스랑 콜라 값이 같음');
+    }
+    
+    
+    // var a = document.getElementsByName('mil');
+    // var b = document.getElementsByName('coke');
+    
+    // a = a[0].innerText
+    // b = b[0].innerText
+    
+    // console.log(a-b);
+          // if ((coke-milkies)>0) {
+          //   console.log(coke-milkies);
+          // } else if ((coke-milkies)<0) {
+          //   console.log(milkies-coke);
+          // } else {
+          //   console.log('밀키스랑 콜라 값이 같음');
+          // }
+          //위에건 됨. 근데 콜라랑 밀키스 비교하는거 콜라가 큰데 그게 안됨.
+        // console.log(coke - milkies);
+    </script>
+</body>
+
+</html>
