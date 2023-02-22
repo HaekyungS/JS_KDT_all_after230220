@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    let root = document.getElementById('root');
+    let student = [
+      "강지민", "곽윤호", "권예준", "김동주",
+      "김은아", "김종윤", "김지섭", "김형진",
+      "노수민", "류은이", "박달재", "박수연",
+      "박준형", "성해경", "이경택", "이세민",
+      "이재권", "임지성", "장루빈", "정성철",
+      "정지은", "정희은", "최대건", "한유진",
+      "허진"
+    ];
+    console.dir(student);
+    
+    for(i=0;i<student.length;i+=4){
+      let divs=document.createElement("div");
+      divs.style.cssText="display:flex; flex-decoration:column;"
+      root.appendChild(divs);
+    }
+    //4명씩만 들어가게 하고 싶음!
+    console.dir(root.children);
+    for(i=0;i<root.children.length;i++){
+      for(j=i*4;j<(i*4+4)&&j<student.length;j++){
+        let divs=document.createElement("div");
+        divs.innerHTML=student[j];
+        divs.style.border="1px solid pink";
+        root.children[i].appendChild(divs);
+      } //비교연산자 부분에서 j가 학생수보다 많아 undefined 표기가 발생
+        //그래서 비교연산자 중 && 을 추가하여 두개의 경우 모두 충족할때까지로 수정.
+    }
+
+    // let input = document.createElement("input");
+    // root.append(input)
+    // 이름을 입력하면 찾아주게 하고싶음! 색을 바꾼다든지 뭐든지
+
+
+    // for(i=0; i<student.length; i++){
+    //   let div=document.createElement("div");
+    //   div.innerHTML=student[i];
+    //   root.appendChild(div);
+    //   div.parentElement.style.cssText = "display : flex;"
+    //   //절차의 문제. 아직 div가 생성되지 않은 상태에서 div의 부모에게 스타일을 적용하라 하니까 적용이 안되는 것.
+    //   console.dir(root.appendChild(div));
+    // }
+
+    // for(i=0;i<student.length;i++){
+    //   let p=document.createElement("p")//p태그를 만들고 i+1번째 학생은 누구나 라 출력하기.
+    //   p.innerHTML=[i+1]+"번째 학생은 "+student[i]+"입니다."
+    //   root.appendChild(p);
+    //   console.dir(root.appendChild(p));
+    // };
+
+    
+
+  </script>
+</body>
+
+</html>
