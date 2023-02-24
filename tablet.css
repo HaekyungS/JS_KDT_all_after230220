@@ -1,0 +1,7 @@
+@media (min-width:401px) and (max-width:1079px) {
+  div{
+    width: 700px;
+    height: 900px;
+    background-color: coral;
+  }
+}
