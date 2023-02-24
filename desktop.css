@@ -1,0 +1,7 @@
+@media screen and (max-width:1080px) {
+  div{
+    width: 1080px;
+    height: 1000px;
+    background-color: aquamarine;
+  }
+}
