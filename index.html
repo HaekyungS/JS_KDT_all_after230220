@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    let root = document.getElementById('root');
+    root.style.cssText="width:200px; height:100px; text-align:center"
+    console.dir(root);
+    let weekend = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일","공휴일","국경일"]
+    let color = ["red","orange","yellow","green","blue","Indigo","purple"]
+    // root.innerHTML=weekend[1]
+
+    let counter = 0;
+    //root.addEventListener('문자열',"함수가 필요")
+    //-> 이벤트:사건, 사태 / 들을 준비가 된 변화를 감지하는 듣는자.
+    //이벤트 핸들러, 변화를 감지한다는 것.
+    //문자열 : 0번째 파라미터 라 함. -> 변수가 순서가 있음(규칙)
+
+    // function increase(value) {
+    //   value = value+1;
+    //   console.log(value);
+    // }
+
+    root.addEventListener("click", function () {
+      //클릭하면 문자가 생성됨 -> 사용자가 클릭하지 않으면 문자가 없음 => 이벤트를 사용자에게 맡기는 것
+      //동적으로 이벤트를 줘서 문자를 생성해줌.
+
+      // root.textContent = weekend[counter];
+      // //root에 weekend배열의 counter 숫자번째의 문자를 문자넣는 자리에 넣어줘.
+
+      root.style.backgroundColor=color[counter]
+      root.innerHTML="오늘은 "+weekend[counter]+"! <br/> 오늘의 행운의 컬러는 "+color[counter]+" 입니다!"
+      root.style.fontSize=[counter]+"px";
+
+
+      counter = counter + 1;
+
+      if(counter >= color.length){
+        counter = 0;
+      }//재할당이 됨.
+
+      console.log(counter);
+    })
+
+
+  </script>
+</body>
+
+</html>
