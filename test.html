@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #root{
+      width: 100px;
+      height: 100px;
+      background-color: aliceblue;
+      font-size: 100px;
+    }
+    /* 정적으로 스타일을 줘봤는데 적용은 되지만 하기 dir에 적용이 되어있지 않음을 확인할 수 있음.
+    절차가 div#root -> 스크립트 -> css 순이기에 스크립트에서 스타일을 적용하면 또 걔가 적용됨. 
+    같은 걸 적용해줘도 css는 무시당함 약간 불쌍행*/
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    let root=document.getElementById("root");
+    root.style.width="500px"
+    root.style.fontSize="50px"
+    root.innerText="안녕"
+    console.dir(root)
+    console.dir(root.style)
+
+  </script>
+</html>
