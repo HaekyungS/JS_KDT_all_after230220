@@ -56,24 +56,30 @@
     let nav = TagsForm.Nav;
     nav.style.cssText = "width:100%; height:10%; display:flex; justify-content:center; padding:auto;";
     divChild.append(nav);
-
+// 여기까진 이상 없음.
+//이 밑에 input 이 두군데에 들어가는데 여기가 오류. 
+//input 함수에 문제있넹
+//일단 input은 함수를 뺐는데 원인 찾기
     let OperationsOfMath = ["+", "-", "*", "%"];
 
     for (i = 0; i < OperationsOfMath.length; i++) {
-      let input = TagsForm.Input;
+      let input = document.createElement("input");
       input.setAttribute("type", "button");
       input.setAttribute("value", OperationsOfMath[i])
       input.style.cssText = "width:20%; height:80%; text-align:center; font-family:'Shantell Sans'; margin:auto; border:0.5px";
       input.innerHTML = OperationsOfMath[i];
       nav.append(input);
+      console.dir(input);
+      //콘솔 찍어보니까 다 리셋으로 뜨넹
     }
+    //if 로 마지막에 input을 나가기 전에 바꿔줘야하나.
 
     let main = TagsForm.Main;
     main.style.cssText = "width:100%; height:75%; display:flex; justify-content:center; font-family:'Shantell Sans'; flex-wrap: wrap;"
     divChild.append(main);
     // 정렬에 문제있음. 수정필요 => 인풋들이 inline-block으로 되있어서 정렬이 안되는 거였고, flex로 바꿔주고 wrap 설정해서 사이즈 넘어가면 다음줄로 정렬되게 함.
     for (j = 0; j < 12; j++) {
-      let InputNumber = TagsForm.Input;
+      let InputNumber = document.createElement("input")
       InputNumber.style.cssText = "height:25%; width:30%; margin:0; display:flex; text-align:center; font-family:'Shantell Sans'; border:0.5px"
       // InputNumber.setAttribute("onclick", "multiple()");
 

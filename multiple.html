@@ -74,22 +74,28 @@
       main.appendChild(InputNumber);
     }
     // onclick event로 하면 될거같은데 온클릭한 값이 숫자면 화면에 띄워주고, 연산기호 누르면 자동으로 다음 값을 입력해서 = 을 입력하면 계산되어 나오게.
-    divChild.addEventListener("click",function(){
-      let value = 0;
-      let inputNumber;
+    // 여기서 생성할때마다 값을 배열에 넣어주면 되지않으까?
 
-      inputNumber=[j+1]; //j가 이미 12로 끝났으니까 13만 출력됨.
-      inputNumber=Number(inputNumber);
-      span.innerHTML=value+inputNumber; //클릭하면 출력까진 됨. 근데 j를 어캐해야 값을 담으까
-      console.log(value+inputNumber)
-    })
+    divChild.addEventListener("click", function () {
+      let inputNumber;
+      
+      // inputNumber = [j + 1]; //j가 이미 12로 끝났으니까 13만 출력됨.
+      // inputNumber = Number(inputNumber);
+      span.innerHTML = value + inputNumber;
+      //클릭하면 출력까진 됨. 근데 j를 어캐해야 값을 담으까
+      console.log(value + inputNumber)
+    })//몬가 그 있자나 뭔가 그 function 자알 쓰면 될거같은뎅
+    //아님 온클릭 이벤트를 input 들에 추가해서 온클릭 하면 변수에 담기게 하까.
+    
 
     // 순서대로 따져보면 1. 숫자를 누르면 span에 누른 값이 떠야함.
     // 근데 만약 숫자를 두개를 누르면 그 두개를 문자로써 합친 값이 숫자로 나와야함.
     // 2. 처음 누른 숫자 이후 연산기호를 누르면 그 연산을 해야함.
     // 3. 연산기호 클릭 이후 눌린 숫자를 또 담아줘서 처음 누른 숫자와 연산기호 뒤에 누른 숫자에 대한 해당 연산값이 결과값으로 출력되야함.
     // 4. 결과값은 =을 누른 시점에 나와야함.
-    // 5. reset 버튼을 누르면 초기화가 진행되야함.
+    // 5. reset 버튼을 누르면 리셋이 되야함.
+
+
 
 
 
