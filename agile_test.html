@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="./hae.js"></script>
+  <!-- js 파일을 각자 만들어 합치는 것도 가능. 근데 중복적으로 적용된 값은 뒤에꺼만 적용되네. 중복도 안알려주구...
+  순차적으로 적용되고 적용이 안되는 것도 있을 것임. 그걸 확인하는게 요점. -->
+  <script>
+  const root=document.getElementById('root');
+
+  ElementMaker.TagName="div";
+  // console.log(ElementMaker.TagName)
+  ElementMaker.AttributeName="id";
+  ElementMaker.AttributeValue="divs";
+  ElementMaker.Parent=root;
+  //개똥멍충이냐 root는 문자열이 아니라 변수
+  ElementMaker.Maker();
+
+  console.dir(ElementMaker.Maker)
+
+  </script>
+</body>
+</html>
