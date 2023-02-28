@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #menu {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+  }
+</style>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById("root");
+
+    const ElementMaker = {
+      tagname: "",
+      setAttriName: "",
+      setAttriValue: "",
+      Parent: "",
+      Maker: function () {
+        const Element = document.createElement(this.tagname);
+        element.setAttribute(this.setAttriName, this.setAttriValue);
+        this.Parent.appendChild(element);
+      },
+      loopfunc: function () {
+        for (i = 0; i < 100; i++) {
+          this.Maker();
+        }
+      }
+    }
+    ElementMaker.tagname="li"
+    ElementMaker.setAttriName="class"
+    ElementMaker.setAttriValue="hi"
+    ElementMaker.Parent="root"
+
+
+  </script>
+</body>
+
+</html>
