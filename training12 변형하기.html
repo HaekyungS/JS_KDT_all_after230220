@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    function CreateDoc(tag, Parents, attri, attriValue) {
+      const element = document.createElement(tag);
+      Parents.appendChild(element);
+      if (attri !== undefined) {
+        element.setAttribute(attri, attriValue);
+      }
+    }//태그를 생성하는 함수
+
+    function FlexSet(tag) {
+      tag.style.display = "flex";
+      tag.style.justifyContent = "center";
+      tag.style.alignItems = "center";
+    }//flex 속성이 모두 동일하기에 함수로 묶어서 한번에 적용되게 함.
+
+    document.body.style.overflowX = "hidden";
+    //body의 스타일 태그
+
+    // aside id=move-btn 부분
+    CreateDoc("aside", document.body, "id", "move-btn");
+    const Movebtn = document.getElementById("move-btn");
+    Movebtn.style.cssText = "width:200px; height:200px; background-color:#fff; border-radius:50%; position:fixed; bottom:10px; left:50vw; transform:translate(-50%, 0);";
+    FlexSet(Movebtn);
+    CreateDoc("h1", Movebtn);
+    Movebtn.children[0].textContent = "MOVE!"
+
+    // 무브 움직이면 재밌겠당. 아냐 무브 누르면 색 죄다 바뀌게
+    //item누르면 없어지게 해버리고..?
+
+
+    //div id=root 부분
+    CreateDoc("div", document.body, "id", "root");
+    document.body.children[2].style.cssText = "width:100vw; height:100vh; background-color:cadetblue;";
+    FlexSet(document.body.children[2]);
+
+    //main 부분
+    CreateDoc("main", document.body.children[2]);
+    // root이 여러번 필요한게 아니라서 따로 변수선언하지않고 관계로 인식시킴
+
+    const main = document.body.children[2].children[0];
+    main.style.cssText = "width:500px; height:500px; border:1px dotted black;";
+    FlexSet(main);
+
+    //왼쪽 section 부분
+    CreateDoc("section", main, "id", "left-sect");
+    const Leftsec = document.getElementById("left-sect");
+    Leftsec.style.cssText = "width:200px; height:450px; border:1px solid black";
+    FlexSet(Leftsec);
+
+    //section내 ul 부분
+    CreateDoc("ul", Leftsec);
+    const Leftul = Leftsec.children[0];
+    Leftul.style.listStyleType = "none";
+
+    //ul내에 li태그 부분 -> 반복적인 5개의 태그 생성을 위해 반복문 이용
+    for (i = 0; i < 5; i++) {
+      CreateDoc("li", Leftul);
+      Leftul.children[i].textContent = "items-" + [i + 1];
+      Leftul.children[i].style.cssText = "width:100%; height:50px; background-color:#fff; border:1px solid black";
+    }
+
+    //오른쪽섹션 부분
+    CreateDoc("section", main, "id", "right-sect");
+    main.children[1].style.cssText = "width:200px; height:450px; border:1px solid blue;";
+    FlexSet(main.children[1])
+
+    CreateDoc("ul", main.children[1]);
+    const Rightul = main.children[1].children[0];
+    Rightul.style.cssText = "display:none; list-style-type:none";
+
+    for (i = 0; i < 5; i++) {
+      CreateDoc("li", Rightul);
+      Rightul.children[i].textContent = "items-" + [i + 1];
+      Rightul.children[i].style.cssText = "width:100%; height:50px; background-color:#fff; border:1px solid black;";
+    }
+
+    //move 누르면 오른쪽 왼쪽 섹션 리스트가 이동하는 것 처럼 보이게.
+    let Switch = true;
+    Movebtn.addEventListener("click", function () {
+      if (Switch === true) {
+        Rightul.style.display = "block";
+        Leftul.style.display = "none";
+        Switch = false;
+      } else {
+        Rightul.style.display = "none";
+        Leftul.style.display = "block";
+        Switch = true;
+      }
+    })
+
+    //move 누르면 색상바뀌게.
+    // Movebtn.addEventListener("click",function(){
+    //   if(Switch===true){
+    //     document.body.children[2].style.backgroundColor="violet";
+    //     Switch = false;
+    //   }else{
+    //     document.body.children[2].style.backgroundColor="cadetblue";
+    //     Switch = true;
+    //   }
+    // })
+
+
+
+  </script>
+</body>
+
+</html>
