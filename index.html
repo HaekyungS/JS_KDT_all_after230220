@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <ul id="menu">
+      <li>items-1</li>
+      <li>items-2</li>
+      <li>items-3</li>
+      <li>items-4</li>
+      <li>items-5</li>
+    </ul>
+  </div>
+  <script>
+    const menu = document.getElementById("menu");
+    const firstli = document.querySelector("#menu>li:nth-child(1)")
+    //querySelector 는 css 방식을 그대로 해서 쓰는 법도 css랑 같음. nth가 그래서 0이 아닌 1부터
+
+    console.dir(menu.children);
+    console.dir(firstli);
+    // menu.children[0].style.color = "red";
+    // menu.children[1].style.color = "yellow";
+    // menu.children[2].style.color = "orange";
+    // menu.children[3].style.color = "blue";
+    // menu.children[4].style.color = "green";
+
+    //위와 아래가 똑같음.
+
+    const Color = ["red", "orange", "yellow", "blue", "green"];
+
+        // for (i = 0; i < menu.children.length; i++) {
+    //   menu.children[i].style.color = Color[i];
+    //   let count = 0;
+    //   menu.children[i].addEventListener("click", function () {
+    //     for (j = 0; j < menu.children.length; j++) {
+    //       menu.children[j].style.color = Color[count];
+    //       if (count >= menu.children.length) {
+    //         count = 0;
+    //       } else {
+    //         count += 1;
+    //       }
+    //       //되는데 죄다 바뀜.
+    //     }
+    //   })
+    // }
+
+    // for(let i = menu.children.length; i > 0 ; i--){
+    //   menu.children[i].style.color = Color[i];
+    // }
+    // 조건문을 거꾸로 쓸 수도 있는 거임.
+
+    //DOM API 이벤트리스너 method
+    //함수 매게변수 자리에 함수를 콜백 이라 함.
+    // let count = 0;
+    // menu.children[2].addEventListener("click", function () {
+    //   menu.children[2].style.color = Color[count];
+    //   count += 1;
+    //   if (count >= i) {
+    //     count = 0;
+    //   }
+    // })//이건 실행 확인.
+
+  </script>
+</body>
+
+</html>
