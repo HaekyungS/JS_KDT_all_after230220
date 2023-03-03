@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow-x: hidden;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin:0;
+      padding:0;
+    }
+
+    #root {
+      width:100vw;
+      /* height:100vh; */
+      background-color: #fff;
+      border:1px solid black;
+      /* flex set */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #root > ul {
+      width: 100vw;
+      height:100vh;
+      border: 1px solid cadetblue;
+      /* flex set */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #root > ul > li {
+      border: 1px dotted #333;
+      background-color: #ccc;
+      margin:1vh;
+      padding:2vw;
+      border-radius: 10px;
+      text-align: center;
+      font-size:3rem;
+    }
+    #root > ul > li:nth-child(1) {
+      color: #fff;
+      background-color: #000;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+  </div>
+  <script>
+    const studentList = [
+      "강지민",
+      "곽윤호",
+      "권예준",
+      "김동주",
+      "김은아",
+      "김종윤",
+      "김지섭",
+      "김형진",
+      "노수민",
+      "류은이",
+      "박달재",
+      "박수연",
+      "박준형",
+      "성해경",
+      "이경택",
+      "이세민",
+      "이재권",
+      "임지성",
+      "장루빈",
+      "정성철",
+      "정지은",
+      "정희은",
+      "최대건",
+      "한유진",
+      "허진",
+    ];
+
+    
+// console.log(studentList);
+
+/**
+ * * KDT-2기 학생 모두를 조회해 팀을 나누어야 함
+ * * 랜덤결정으로 -> 1조부터 ~ 5조 (총원 25명으로 5의 배수)
+ * * 한명이라도 누락되면 안됨
+ * * 한명도 중복되면 안됨 -> 당장 떠오르는 것 집합개념
+ * * 알고리즘을 만들어 -> 학생들과 분석해야 함 -> 코드가 절차적이어야 함
+ */
+
+
+console.log(studentList.length)
+/**
+ * 
+ * @param {0} min 
+ * @param {array.length} max 
+ * @returns integer
+ * 
+ * 임의의 정수가 랜덤으로 리턴된다.
+ */
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+}
+
+// pseudo 1. 0~ 24 까지 랜덤의 숫자가 나타나야됨
+// pseudo 2. 랜덤 하지만 모든 값이 다 나와야 함
+
+const getRandomSet = new Set();
+// ? . set에도 length가 있나? 확인 Set.prototype.size 라는 값이 있음
+// ? . set에도 push가 있나? 확인 Set.prototype.add 라는 값이 있음
+// ? . set에도 pop이 있나? 확인 Set.prototype.delete 라는 값이 있음
+
+// * 반복문
+// * for -> 횟수가 결정되기 때문에 제한됨
+// * while -> 조건기반 반복문
+
+while(getRandomSet.size < studentList.length) {
+  // 조건식 : 집합 갯수가 배열 갯수를 초과하지 않을 때 참, 계속 반복
+  let getRandomIntData = getRandomInt(0, studentList.length);
+  if(getRandomSet.has(getRandomIntData) === false) {
+    // * Set의 메서드 중 has기능은 boolean타입을 리턴함
+    getRandomSet.add(getRandomIntData);
+  }
+}
+console.log("while loop 종료");
+
+
+const fromSetChangeArr = Array.from(getRandomSet);
+const decideTeamOrder = [];
+for(let i = 0; i < fromSetChangeArr.length; i+=5) {
+  decideTeamOrder.push(fromSetChangeArr.slice(i, i+5));
+}
+  // decideTeam.push(studentList[element]);
+;
+
+// console.log(temp.length);
+// console.log(temp[0]);
+// console.log(studentList[temp[0]]);
+// console.log(decideTeamOrder);
+
+function detectStudentName(numberArr, targetArr) {
+  // * 난수로 결정된 [ 2,3,5,4,6] decideTeamOrder
+  // * 값 하나를 studentList 인덱스로 조회
+  // * 조회된 값의 string(이름)을 로컬 배열에 푸시
+  let parentArr = [];
+  for(let i = 0; i < numberArr.length; i++) {
+    let childArr = [];
+    for(let j = 0; j < numberArr[i].length; j++) {
+      if(j === 0) {
+        childArr.push(`팀장: ${targetArr[numberArr[i][j]]}`);
+      } else {
+        childArr.push(`팀원: ${targetArr[numberArr[i][j]]}`);
+      }
+    }
+    parentArr.push(childArr);
+  }
+  return parentArr;
+}
+const decideTeamName = detectStudentName(decideTeamOrder, studentList); 
+console.log(decideTeamName);
+
+/** 
+ * 
+ * * 위는 비즈니스 로직
+ * 
+ * * 아래는 결정된 데이터를 활용해 화면에 표현
+ * 
+*/
+
+const root = document.getElementById('root');
+const ulList = root.querySelectorAll('ul');
+
+for(let i = 0; i < ulList.length; i++) {
+  for(let j = 0; j < decideTeamName[i].length; j++) {
+    const li = document.createElement('li');
+    li.textContent = decideTeamName[i][j];
+    ulList[i].appendChild(li);
+  }
+}
+
+
+  </script>
+</body>
+</html>
