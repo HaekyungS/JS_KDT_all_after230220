@@ -74,14 +74,15 @@
       main.appendChild(InputNumber);
     }
     // onclick event로 하면 될거같은데 온클릭한 값이 숫자면 화면에 띄워주고, 연산기호 누르면 자동으로 다음 값을 입력해서 = 을 입력하면 계산되어 나오게.
-    divChild.addEventListener("click",function(){
-      let value = 0;
-      let inputNumber;
+    let value = 0;
+    divChild.addEventListener("click", function () {
+      let inputNumberValue=document.getElementsByTagName("input").value;
+      console.dir(inputNumberValue)
 
-      inputNumber=[j+1]; //j가 이미 12로 끝났으니까 13만 출력됨.
-      inputNumber=Number(inputNumber);
-      span.innerHTML=value+inputNumber; //클릭하면 출력까진 됨. 근데 j를 어캐해야 값을 담으까
-      console.log(value+inputNumber)
+      inputNumber = [j + 1]; //j가 이미 12로 끝났으니까 13만 출력됨.
+      inputNumber = Number(inputNumber);
+      span.innerHTML = value + inputNumber; //클릭하면 출력까진 됨. 근데 j를 어캐해야 값을 담으까
+      console.log(value + inputNumber)
     })
 
     // 순서대로 따져보면 1. 숫자를 누르면 span에 누른 값이 떠야함.
