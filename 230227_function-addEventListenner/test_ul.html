@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"> </div>
+  <script>
+    let root = document.getElementById("root");
+
+    function HTMLForm(a, b, c, d) {
+      let Form = {
+        Header: document.createElement(a),
+        Nav: document.createElement(b),
+        Main: document.createElement(c),
+        Footer: document.createElement(d)
+      }
+      return Form;
+    }
+
+    let tagArray = ["header", "nav", "main", "footer"];
+    let TagForm = HTMLForm(tagArray[0], tagArray[1], tagArray[2], tagArray[3]);
+    console.log(TagForm)
+    root.appendChild(TagForm.Header);
+    root.appendChild(TagForm.Nav);
+    root.appendChild(TagForm.Main);
+    root.appendChild(TagForm.Footer);
+
+
+
+    // function dataFunc(a, b, c, d) {
+    //   let obj = {
+    //     parent: document.querySelector(a),
+    //     children: document.createElement(b),
+    //     grandchildren: document.createElement(c),
+    //     grandchildrenText: d
+    //   }
+    //   return obj;
+    // }//obj객체는 함수 내에만 있는 것. 함수 밖으로는 못나감.
+
+    // let tagArray = ["div","haeder","main","footer"];
+    // let dataForm=dataFunc(tagArray[0],tagArray[0],"span","hello");
+    // // 위같은 상황을 캡슐화 라 함. 내가 원할때마다 호출하는 것.
+    // // 내가 원하는 것으로 매개변수를 바꿔주기만 하면 쉽게 바꿀 수 있음.
+    // // 리엑트의 초기 형태
+    // // 나중엔 실제값들은 다 DB로 빠지고 여긴 실체가 없는 상태가 될 것이다. (리터럴은 여기없는)
+
+    // // let dataForm = {
+    // //   parent: document.querySelector('#root'),
+    // //   children: document.createElement("ul"),
+    // //   grandchildren: document.createElement("li"),
+    // //   grandchildrenText: "hello"
+    // // }
+
+    // let root = dataForm.parent;
+    // console.dir(root);
+    // let ul = dataForm.children;
+    // root.appendChild(ul);
+    // let li = dataForm.grandchildren;
+    // ul.appendChild(li);
+    // li.textContent = dataForm.grandchildrenText;
+    // // appendChild가 되냐 안되냐로 자식을 품을 수 있나 없나가 나옴.
+
+    // // root.children[0]="hello"
+    // // 함수를 쓰냐 안쓰냐는 내 몫일 뿐. 내가 편하면 쓰는겨.
+
+  </script>
+</body>
+
+</html>
