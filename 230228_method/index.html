@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let ID = ["root","first","second"];
+
+    for(i=0;i<ID.length;i++){
+    if(i===0){
+    let root = document.createElement("div");
+    root.setAttribute("id",ID[i]);
+    document.body.appendChild(root);}
+    else{
+    let Div = document.createElement("div");
+    Div.setAttribute("id",ID[i]);
+    root.appendChild(Div);}
+    }//동적으로 div생성 및 아이디부여완료
+
+    function TagStyle(Tag){
+      for(j=0;j<ID.length;j++){
+        if(j===0){
+          Tag.style.cssText="width:500px; height:500px; border:1px soild black";
+        }else if(j===1){
+          Tag.style.cssText="width:500px; height:500px; border:1px solid red";
+        }else{
+          Tag.style.cssText="width:500px; height:500px; border:1px soild green";
+        }
+      }
+    }
+
+     //뭔가 또 꼬였다 우왕
+    
+
+
+
+
+
+
+  </script>
+</body>
+</html>
