@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+  </div>
+  <script>
+    let root;
+    console.log(root);
+    root = document; //이러면 요소탭과 동일한 게 나옴.
+    console.log(root);
+    console.dir(root); 
+    console.log(typeof(root));
+
+    let a = root.getElementById('root');
+    console.log(a);
+    console.dir(a.children[2]);
+    a.children[2].style.height="100px";
+    a.children[2].style.width="100px";
+    a.children[2].style.color="red";
+    a.children[2].style.border="1px solid";
+    a.children[2].style.backgroundColor="red";
+    // a.children[1].style={
+    //   height:100px,
+
+    // }
+
+
+    // a.children[2].style.color="red"
+
+    root = document.getElementById('root');
+    console.log(root)
+
+
+    // let coffee={
+    //   matterial : ["원두","물","커피머신","원두그라인더"],
+    //   place : "지선이네빽다방",
+    //   people : ["지선","정원","알바몬","알바천국"],
+    //   price: 50000000
+    // }
+
+    // console.log("커피를 만들려면 우선 재료가 "+coffee.matterial+"가 있어야 한다.");
+    // console.log("장소는 "+coffee["place"]+"가 좋겠어!");
+    // console.log("만드는 사람은 "+coffee["people"]+"중 누가 좋을까");
+    // console.log("역시 "+coffee.people[0]+"가 만든 게 맛있지:)");
+    // console.log("가격은 "+coffee["price"]+"원 정도 어때");
+    // console.log("고갱님이 빡쳐서 -"+coffee.price+"원 입니다. 배상해주세여.")
+
+    // let coffee =["원두","물","커피머신","따뜻한물","머그잔"];
+
+    // console.log(coffee);
+    // console.log("커피를 만들때는 "+coffee[0]+"가 젤 먼저 필요하징");
+
+
+    //console.dir(coffee);
+
+    // let itsMe = ["Seonghaekyung",29,"developer","raemian"]
+    // //순서를 구분할 수 있음되면 array(배열) 파이썬에선 list
+    // //key가 이름처럼 쓰이면 객체
+
+    // console.dir(itsMe);
+    // console.log(itsMe.length);
+    // console.log(itsMe["length"]);
+
+
+    //console.log(typeof(itsMe));
+
+
+    // let itsMe = {
+    //   name:"Seonghaekyung",
+    //   age:29,
+    //   job:"developer",
+    //   home:"raemian",
+    //   brother: "minchang",
+    //   sister:"dakyung",
+    //   favorite:"Soju&Travel",
+    //   hobby :{
+    //     first : "traveling",
+    //     second: "sleeping"
+    //   }//이렇게 객체 안에 객체를 넣는걸 다차원객체(다차원object)
+    // };//이렇게 객체 안에 있는 것들을 8개의 속성이 있다 할 수 있다.
+
+    // console.log(itsMe.name);
+    // console.log(itsMe["home"]);
+    // console.log(itsMe.hobby.first);
+    // console.log(itsMe["hobby"]["second"]);
+    // console.log(itsMe["hobby"].first);
+    // console.log(itsMe.hobby["second"]);//점표기법과 괄호를 혼합해서 써도 됨
+
+
+    // let SeonghaekyungAboutName="Seonghaekyung";
+    // let SeonghaekyungAboutAge=29;
+    // let SeonghaekyungAboutjob="developer";
+    // let SeonghaekyungAbouthome="raemian";
+    // 만약 객체를 지원하지 않으면 위와 같이 하나씩 써줘야함.
+
+
+    // let kim = {
+    //   a: "김동주",
+    //   b: "김은아",
+    //   c: "김종윤",
+    //   d: "김지섭",
+    //   e: "김형진"};//이렇게 랩핑하는 형태를 객체object 라 함
+    //               //1,2,3,4 도 가능한데 그건 []로 해야하네!!!!
+    //   console.log(kim)
+    //   console.log(kim.b);//수많은 데이터 중 하나를 가져오는 걸 getting 했다 함.
+
+
+    //   let root=document.getElementById('root');
+    //   console.dir(root);
+
+    // let name="monster";
+    // let sentence = "Hey"+"모두들"+"안녕"+"나는야"+name+29;
+
+    // console.log(sentence);
+
+
+    // let numberVar=10; //숫자는 걍 해도됨
+    // let stringVar="10"; //"" 문자열 작성법
+    // // 문자열로 하는 이유 : 연산이 되어버리면 안되니까. 연산이 불가능하도록 문자열로 작성.
+    
+    // console.log(numberVar+stringVar);
+    
+
+    // let a=1;
+    // let b=2;
+    // let c=a+b; //a,b의 값을 바꿔도 알아서 연산을 해줌.
+    // let d=1+2; //얜 값까지 바꿔줘야 함.
+    // console.log(c);
+
+</script>
+</body>
+</html>

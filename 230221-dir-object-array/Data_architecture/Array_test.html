@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place별 Coffee</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <script>
+    let div=document.getElementById('root');
+
+    div.offsetParent.style.cssText="width:100vw; height:100vh"
+    div.style.cssText="width:100%; height:100%; background-color:#f2f2ff;display:flex; justfy-content:center; align-items:center;"
+
+    let Place=["집","길바닥","학원"];
+    let Method=[["커피프레소","핸드드립","캡슐머신"],
+    ["스타벅스","개인카페","참는다"],["카누","카페가기"]];
+
+    for(i=0;i<div.children.length;i++){
+      div.children[i].innerHTML="저는 "+Place[i]+"에 있을 때는 "+Method[i]+"한 방법들로 커피를 마십니다.<br/>"
+      if(i==0){
+      div.children[i].style.color="blue";
+      }else if(i==1){
+      div.children[i].style.color="pink";
+      }else{
+      div.children[i].style.color="grey";
+      }
+    }//여기까지 한 김에 금액을 넣으면 합계가 자동으로 계산되는 것도 만들기.
+    
+
+    
+
+  </script>
+</body>
+</html>

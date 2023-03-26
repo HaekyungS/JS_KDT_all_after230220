@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <script>
+    let div=document.getElementById('root');
+
+    div.offsetParent.style.cssText="width:100vw; height:100vh"
+    // div.offsetParent.style.width="100vw";
+    // div.offsetParent.style.height="100vh";
+    // 위처럼 css의 여러 요소를 반영하고 싶으면 저렇게 쓸 수 있음.
+    // 근데 이 방법들 모두 요소탭을 확인해보면 인라인으로 반영됨을 알수있다.
+    // 자스에서 style태그를 만드는 법은 없나?
+    div.style.width="100%";
+    div.style.height="100%";
+    // console.dir(div);
+
+
+
+    let Location=["집!","길바닥","그린컴퓨터아카데미"];
+    let HomeAction={
+      moringAction:["눈뜨기","알람끄기","아침약먹기","샤워하기","옷입기","밥먹기"],
+      nightAction:["씻기","저녁밥차리기","설거지","도시락싸기","컴퓨터켜기","안풀린부분더하기","양치하기","잠자기"]
+    }
+    let AccademyAction={
+      moringAction:["QR코드찍기(입실)","컴퓨터켜기","커피&물뜨러가기","notion로그인","어젯밤한일작성","VS Code키기","수업듣기"],
+      RestAction:["화장실다녀오기","커피타러가기","물뜨러가기","점심먹기","산책가기"],
+      AfterAction:["수업듣기","QR코드찍기(퇴실)","보충작업"]
+    }
+    let RoadAction=["버스정거장까지 걸어가기","버스타기","황토길 산책하기","집으로 걸어가기","통화하기","노래부르기","사진찍기"];
+
+    console.dir(HomeAction)
+    for(i=0; i<div.children.length;i++){
+      div.children[i].style.width=300*[i+1]+"px";
+      div.children[i].style.height=200*[i+1]+"px";
+      if(i==0){
+        div.children[i].innerHTML=[
+          "저는 지금 "+Location[i]+"입니다. <br/>저는 주로 "+Location[i]+"에서는 아침에는 "+HomeAction.moringAction+"을 합니다. <br/> 그리고 저녁에는 "+HomeAction.nightAction+"을 하곤 합니다."]
+      }else if(i==1){
+        div.children[i].innerHTML=[
+          "저는 지금 "+Location[i]+"입니다. <br/> 저는 주로 "+Location[i]+"에서는 "+RoadAction+"을 하곤 합니다!"]
+      }else{
+        div.children[i].innerHTML=[
+          "저는 지금 "+Location[i]+"입니다. <br/>저는 주로 "+Location[i]+"에서는 아침오면 "+AccademyAction.moringAction+"을 합니다. <br/> 그 후엔 "+AccademyAction.AfterAction+" 을 하고, 쉬는시간에는 "+AccademyAction.RestAction+"을 하곤 합니다.<br/>"]
+      }
+    }
+
+    // let home ={
+    //   location:"Gajang-ro 106",
+    //   moringAction:["눈뜨기","알람끄기","아침약먹기","샤워하기","옷입기","밥먹기"],
+    //   nightAction:["씻기","저녁밥차리기","설거지","도시락싸기","컴퓨터켜기","안풀린부분더하기","양치하기","잠자기"],
+    //   sometimes: "통화하기"
+    // };
+    // let academy ={
+    //   location:"dunsan-dong",
+    //   moringAction:["QR코드찍기(입실)","컴퓨터켜기","커피&물뜨러가기","notion로그인","어젯밤한일작성","VS Code키기","수업듣기"],
+    //   RestAction:["화장실다녀오기","커피타러가기","물뜨러가기","점심먹기","산책가기"],
+    //   AfterAction:["수업듣기","QR코드찍기(퇴실)","보충작업"]
+    // };
+    // let Road ={
+    //   location:"load",
+    //   Action:["걷기","버스타기","계단타기"]
+    // };
+    //순서대로 하고 싶은 거니까 요렇게가 아니라 배열로 있어야 겠네
+
+    
+    //console.dir(Location);
+    // 위로 봤을 때 Array(3) 으로 뜨지만 반복문으로 배열을 순차 적용하고 싶으면 걍 해당변수[i] 로 표현. 변수.Array()는 함수가 아니라고 나옴.
+    // console.dir(academy.moringAction)
+    // 몇몇 변수는 이미 사용중인 경우가 있으니 주의 할것. 
+
+    //console.log(div.children.length)
+    //대소문자에 따라 되기도 하고 안되기도 하니까 주의하기.
+    
+    // 강사님 예시 - 도 하고, 객체와 배열에 대한 구분도 작성해보기.
+    // 자료구조 만드는데 객체를 잘 쓰고 있느냐!를 확인하며 하기~
+    // let start ={
+    //   at:"home",
+    //   order:["눈뜨기","고양이쓰담","알람끄기","하품하기"]
+    // };
+    // let inProgress ={
+    //   at:"road",
+    //   order:[]
+    // };
+    // let end={
+    //   at:"academy",
+    //   order:[]
+    // };
+    // let lifeCycle=[start,inPrograss,end];
+  </script>
+</body>
+</html>
