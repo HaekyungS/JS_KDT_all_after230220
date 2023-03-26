@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById("root");
+    const makeUl = document.createElement("ul");
+    root.appendChild(makeUl);
+    // makeUl.style.width = "100px";
+    // makeUl.style.height = "100px";
+    // makeUl.style.border = "1px solid black";
+    // 1. 가장 직관적인 내가 아는 방법으로 일단 써라~
+
+    // const ulStyleObject = ["width", "height", "border"];
+    // const ulStyleValue = ["100px", "100px", "1px solid black"];
+    // makeUl.style[ulStyleObject[0]]="100px"
+    // makeUl.style[ulStyleObject[1]]="100px"
+    // makeUl.style[ulStyleObject[2]]="1px solid black"
+    // 2. 1번처럼 써서 보였을 때 rapping 이 가능한가?
+
+    //위아래가 모두 동일함. 
+    // for(let i = 0 ; i<ulStyleObject.length;i++){
+    //   makeUl.style[ulStyleObject[i]]=ulStyleValue[i];
+    // }
+    // 3. 제어문/반복문 과 같은 자동화가 가능한가?
+    
+    // function twoArrayDomStyle(element, firstarray, secondarray) {
+    //   for (let i = 0; i < firstarray.length; i++) {
+    //     element.style[firstarray[i]] = secondarray[i];
+    //   }
+    // }
+    // 4. 함수까지 만들 수 있는가?
+    // 리터럴을 걷어낼 수 있는가?
+    
+    // twoArrayDomStyle(makeUl, ulStyleObject, ulStyleValue);
+    
+    let DomStyle ={
+      element : root.children[0],
+      firstarray : ["width", "height", "border"],
+      secondarray : ["100px", "100px", "1px solid black"]
+    }
+
+    function ObjectDomStyle(Object){
+      for (let i = 0; i < Object.firstarray.length; i++) {
+        Object.element.style[Object.firstarray[i]] = Object.secondarray[i];
+      }
+    }
+
+    ObjectDomStyle(DomStyle);
+
+
+
+
+  </script>
+</body>
+
+</html>

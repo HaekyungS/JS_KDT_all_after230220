@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <script>
+    const dinner = ["여수밤바다", "진로노슈거", "새로", "테라", "세계맥주", "토끼", "붉은원숭이", "태국술"];
+    const food = ["닭발", "회", "조개구이", "마라탕", "마라샹궈", "글루텐프리빵", "볶음밥?", "물"];
+    const Color = ["#EA899A", "#E5BE01"];
+
+    function TodayDinner(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function CreateElement(element, Parents) {
+      const Element = document.createElement(element);
+      Parents.appendChild(Element);
+    }
+
+    document.body.style.cssText = "width:100vw; height:100vh; margin:0;"
+
+    CreateElement("div",document.body);
+    const Div=document.body.children[1];
+    Div.style.cssText="width:100%; height:100%; display:flex; justify-content:center; flex-wrap:wrap";
+
+    //2등분을 내서 누르면 랜덤값이 텍스트로 나오게.
+    //누르면 주종 나오게 하고나면 사진 찾아서 주종이랑 사진 같이 나오게 하기.
+    for (i = 0; i < Color.length; i++) {
+      CreateElement("div", Div);
+      const DivChild = Div.children[i];
+      DivChild.style.cssText = "width:100%; height:50%; display:flex; justify-content:center; align-items:center;";
+      DivChild.style.backgroundColor = Color[[TodayDinner(0, Color.length)]];
+      CreateElement("p", DivChild);
+      DivChild.children[0].style.cssText=" font-family:'Gamja Flower'; font-size:25px;"
+      if(i===0){
+        DivChild.children[0].textContent="오늘의 주종"
+      }else{
+        DivChild.children[0].textContent="오늘의 안주"
+      }
+      DivChild.addEventListener("click",function(){
+        console.log(this)
+        if(this === Div.children[0]){
+        DivChild.children[0].textContent=dinner[[TodayDinner(0,dinner.length)]];
+        }else if(this === Div.children[1]){
+        DivChild.children[0].textContent=food[[TodayDinner(0,food.length)]];
+        }
+      })
+    }
+
+    
+    
+    
+    
+    
+    // for(i=0;i<dinner.length;i++){
+    //   const li = document.createElement("li");
+    //   li.textContent=dinner[i];
+    //   div.appendChild(li);
+
+  </script>
+</body>
+
+</html>

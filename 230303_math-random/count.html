@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let studentObject = {
+      "강지민": "마라탕",
+      "곽윤호": "조개",
+      "권예준": "가지",
+      "김동주": "버섯",
+      "김은아": "굴",
+      "김종윤": "오이",
+      "김지섭": "술",
+      "김형진": "독버섯",
+      "노수민": "다리많은거",
+      "류은이": "피망",
+      "박달재": "벌레",
+      "박수연": "삼결살",
+      "박준형": "생간",
+      "성해경": "우엉",
+      "이경택": "홍어",
+      "이세민": "짜장면",
+      "이재권": "가지",
+      "임지성": "단무지",
+      "장루빈": "김치",
+      "정성철": "고수",
+      "정지은": "버섯",
+      "정희은": "술",
+      "최대건": "뼈많은생선",
+      "한유진": "양파",
+      "허진": "딸기",
+    };
+    // console.dir(studentObject);
+
+    let HateMushroom = 0;
+    let HateMushroomHuman=[];
+    let samehuman=0;
+
+    //? 객체안에 key값의 value만 부르는 명은 없나
+    for(let Human in studentObject){
+      console.log(Human)
+      if(studentObject[Human]==="버섯"){
+        HateMushroom +=1;
+        HateMushroomHuman[HateMushroom]=[Human];
+      }
+    }
+
+    // 같은 음식을 싫어하는 사람 수 와 그 사람 이름을 뽑아내기.
+    // 버섯-독버섯 은 같은 계열인데 구분을 못함. 독버섯도 뽑을 방법.
+
+    const div=document.createElement("div")
+    div.style.cssText="width:300px; height:800px;"
+    div.innerHTML="버섯을 싫어하는 사람은 "+HateMushroom+"명 입니다.</br> 이름은 "+[]+"입니다.";
+    document.body.appendChild(div);
+
+  </script>
+</body>
+
+</html>
