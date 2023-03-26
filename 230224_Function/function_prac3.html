@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //구구단 만들기
+    document.body.style.cssText = "width:100vw; height:100vh;"
+    let div = document.createElement("div");
+    div.style.cssText="width:100%; height:100%; display:flex;"
+    document.body.appendChild(div);
+
+    function multiple(x,y) {
+      let result = [x+1]*[y+1];
+      return result;
+    }//리턴이 없으면 당연히 반환값이 없으니 함수가 정상작동할 수 없음.
+
+    for (i = 0; i < 10; i++) {
+      let divs = document.createElement("div");
+      divs.style.cssText = "width:200px; display:flex; flex-direction:column;"
+      div.appendChild(divs);
+      //구구단 10단까지 정렬하기 위해 div 10개 생성
+      for (j = 0; j < 10; j++) {
+        let p = document.createElement("p");
+        divs.appendChild(p);
+        //그 안에 1~10까지 계산해서 한줄씩 출력.
+        p.innerHTML = [i+1] + " x " + [j+1] + " = " + multiple(i, j);
+        //i,j 모두 0부터 시작하므로 0단은 필요없으니까 +1을 해서 1단부터 진행.
+        //함수를 이용해서 값을 출력함.
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

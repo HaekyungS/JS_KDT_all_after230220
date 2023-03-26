@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let hk = 1; //hk이라는 변수의 메모리를 확보함.
+    console.log(hk);
+    hk = "짱!" // 변수가 1에서 짱으로 갱신되었다=> 업데이트 됐당
+    console.log(hk);
+
+    function valueChange(s, w, v) {
+      //함수안에 들어가는 변수 이름은 매개변수 like this 재료
+      //값은 아직 모르지만 너가 부를 때 그 부른거로 돌려줄게.
+      //이처럼 여러개도 할 수 있음
+      if (typeof (s, v, w) === "string") {
+        return s + v + w;
+      }
+      //if(typeof(s)==="string"){
+      // if (typeof (v) === "string") {
+      // if (typeof (w) === "string") {
+      // return s+v+w;
+      //    }
+      //   }
+      // }절차형 프로그래밍임. 이렇게 절차대로 하면 오류가 나지 않음.
+    }
+      // else if(typeof(s,v,w)==="number"){
+      //   s=String[s];
+      //   v=String[v];
+      //   w=String[w];
+      //   return s+v+w;
+      // }
+      // 만약 s,v,w에 숫자를 넣게되면 합산을 함. 이와 같이 개발자의 의도와 다르게 동작하는 것 = 버그 (!== 에러)
+      // return s+w+"안녕하세여"; => ""로 넣는 건 불변리터럴. 이렇게 변수를 안만들고 직접 넣으면 변경이 불가능. 스코프영역은 다른 데이터가 절대로 침범할 수 없음.=불변하다. 
+    
+    hk = valueChange(1, 2, 3);
+    console.log(hk);
+
+    // //for와 구조가 같다. === for도 함수다
+    // function valueChange() {
+    //   return "짱짱"; // return 돌려주다.
+    // }
+    // //함수는 만들어놓긴 하는데 부를 때까진 아무 의미 읍다.요렇게 생긴 걸 함수선언문 이라 함.
+    // //함수는 항상 소괄호() 를 쓴다. => 소괄호는 모두 함수다.
+
+    // hk = valueChange(); //그래서 이렇게 호출을 해줘야함.
+    // //특히 데이터를 얻어오는 함수들은 항상 return이 존재함.
+    // console.log(hk);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let body = document.body;
+    let m = ["+","-","*","/"];
+    let div = document.createElement("div");
+    body.appendChild(div);
+    
+
+    console.dir(div)
+    function Calculation(x,y){
+      for(i=0;i<m.length;i++){
+        let p = document.createElement("p");
+        div.appendChild(p);
+        let result;
+        if(i===0){
+          result = x+y;
+        }else if(i===1){
+          result = x-y;
+        }else if(i===2){
+          result = x*y;
+        }else{
+          result = x/y;
+        }
+        div.children[i].innerText=x+m[i]+y+" = "+result
+      }
+    }
+    Calculation(2,3)
+    // for(i=0;i<3;i++){
+    //   for(j=0;j<3;j++){
+    //     Calculation(i,j);
+    //   }
+
+    
+  </script>
+</body>
+</html>
