@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #Pop-up {
+      width: 300px;
+      height: 300px;
+      background-color: aqua;
+      position: fixed;
+      /* 무조건 브라우저 기준 */
+      top: 100px;
+      left: 100px
+    }
+
+    #Pop-up>button {
+      width: 100px;
+      height: 100px;
+    }
+
+    #root {
+      width: 100vw;
+      height: 300vh;
+      background-color: antiquewhite;
+    }
+
+    #root>section {
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid black;
+    }
+
+    #root>section:nth-child(1) {
+      background-color: beige;
+    }
+
+    #root>section:nth-child(2) {
+      background-color: blue;
+    }
+
+    #root>section:nth-child(3) {
+      background-color: violet;
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside id="Pop-up">
+    <button>close!</button>
+    <p>공욱재는 미남이다</p>
+  </aside>
+
+  <div id="root">
+    <section></section>
+    <section></section>
+    <section></section>
+  </div>
+  <script>
+    const PopUp = document.getElementById("Pop-up");
+    const CloseButton = PopUp.children[0];
+    const root = document.getElementById("root");
+    console.dir(PopUp)
+    console.dir(CloseButton)
+
+    CloseButton.addEventListener("click", function () {
+      CloseButton.parentElement.style.display = "none";
+      //보이지만 않게 만듦. 콘솔로 보면 있음. -> 프론트엔드의 한계.
+
+      const P = document.createElement("p");
+      // P.innerHTML="공욱재강사님은 최고다."
+      P.textContent = "공욱재강사님은 최고다.";
+      root.children[0].appendChild(P);
+
+    })
+
+    root.children[1].addEventListener("click", function () {
+      if (PopUp.style.display === "none") {
+        PopUp.style.display = "block";
+      } else {
+        PopUp.style.display = "none";
+      }
+    })
+
+    root.children[2].addEventListener("click",function(){
+      const NewPopup=document.createElement("div");
+      NewPopup.style.csstext="width:100px; height:100px; display:fixed; background-color:red; top:200px; left: 100px";
+      document.body.appendChild(NewPopup);
+    })
+
+    //위와 같은 건 사용자와 상호작용을 하는 인터렉션 카테고리.
+  </script>
+</body>
+
+</html>

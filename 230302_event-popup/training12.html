@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    function CreateDoc(tag, Parents, attri, attriValue) {
+      const element = document.createElement(tag);
+      Parents.appendChild(element);
+      if (attri !== undefined) {
+        element.setAttribute(attri, attriValue);
+      }
+    }//태그를 생성하는 함수
+
+    function FlexSet(tag){
+      tag.style.display="flex";
+      tag.style.justifyContent="center";
+      tag.style.alignItems="center";
+    }//flex 속성이 모두 동일하기에 함수로 묶어서 한번에 적용되게 함.
+
+    document.body.style.overflowX="hidden";
+    //body의 스타일 태그
+
+    // aside id=move-btn 부분
+    CreateDoc("aside", document.body,"id","move-btn");
+    const Movebtn=document.getElementById("move-btn");
+    Movebtn.style.cssText="width:200px; height:200px; background-color:#fff; border-radius:50%; position:fixed; bottom:10px; left:50vw; transform:translate(-50%, 0);";
+    FlexSet(Movebtn);
+    CreateDoc("h1",Movebtn);
+    Movebtn.children[0].textContent="MOVE!"
+
+    //div id=root 부분
+    CreateDoc("div", document.body,"id","root");
+    document.body.children[2].style.cssText="width:100vw; height:100vh; background-color:cadetblue;";
+    FlexSet(document.body.children[2]);
+    
+    //main 부분
+    CreateDoc("main", document.body.children[2]);
+    // root이 여러번 필요한게 아니라서 따로 변수선언하지않고 관계로 인식시킴
+  
+    const main=document.body.children[2].children[0];
+    main.style.cssText="width:500px; height:500px; border:1px dotted black;";
+    FlexSet(main);
+
+    //왼쪽 section 부분
+    CreateDoc("section", main,"id","left-sect");
+    const Leftsec=document.getElementById("left-sect");
+    Leftsec.style.cssText="width:200px; height:450px; border:1px solid black";
+    FlexSet(Leftsec);
+
+    //section내 ul 부분
+    CreateDoc("ul", Leftsec);
+    const ul=Leftsec.children[0];
+    ul.style.listStyleType="none";
+
+    //ul내에 li태그 부분 -> 반복적인 5개의 태그 생성을 위해 반복문 이용
+    for(i=0;i<5;i++){
+      CreateDoc("li", ul);
+      ul.children[i].textContent="items-"+[i+1];
+      ul.children[i].style.cssText="width:100%; height:50px; background-color:#fff; border:1px solid black";
+    }
+
+    //오른쪽섹션 부분
+    CreateDoc("section", main,"id","right-sect");
+    CreateDoc("ul", main.children[1]);
+    console.dir(main.children[1])
+    main.children[1].style.cssText="width:200px; height:450px; border:1px solid blue";
+
+  </script>
+</body>
+
+</html>

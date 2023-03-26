@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+
+    //document 만들어내는 함수
+    function CreateDoc(Tag, Parents, attri, attriValue) {
+      const element = document.createElement(Tag);
+      Parents.appendChild(element);
+      if (attri !== undefined) {
+        element.setAttribute(attri, attriValue);
+      }
+    }
+
+    //flex일 경우 속성이 모두 같아서 태그만 쓰면 되는 함수
+    function FlexSet(Tag) {
+      Tag.style.display = "flex";
+      Tag.style.justifyContent = "center";
+      Tag.style.alignItems = "center";
+    }
+
+    //주된 공통으로 들어가는 스타일들 생성함수 (배경 혹은 border가 없는 경우도 있어서 if 문 추가)
+    function CommonStyle(Tag, Width, Height, Backgroundcolor, Border) {
+      Tag.style.width = Width;
+      Tag.style.height = Height;
+      if (Backgroundcolor !== undefined) {
+        Tag.style.backgroundColor = Backgroundcolor;
+      }
+      if (Border !== undefined) {
+        Tag.style.border = Border;
+      }
+    }
+
+    //body에 스타일
+    document.body.style.overflowX="hidden";
+    
+    //move 부분
+    CreateDoc("aside", document.body,"id","move-btn");
+    const Movebtn=document.getElementById("move-btn");
+    FlexSet(Movebtn);
+    CommonStyle(Movebtn,"200px","200px","#fff");
+
+    //move태그에만 존재하는 스타일 객체 및 반복문을 이용하여 생성 -> 원리 연습 더 해보기
+    let Movebtnstyle ={
+      borderRadius:"50%",
+      position:"fixed",
+      bottom:"10px",
+      left:"50vw",
+      transform:"translate(-50%,0)"
+    }
+    
+    for(let key in Movebtnstyle){
+      Movebtn.style[key]=Movebtnstyle[key]
+    }
+
+    //h1태그
+    CreateDoc("h1",Movebtn);
+    Movebtn.children[0].textContent="MOVE!"
+
+    //div id=root 부분
+    CreateDoc("div", document.body,"id","root");
+    CommonStyle(document.body.children[2],"100vw","100vh","cadetblue");
+    FlexSet(document.body.children[2]);
+
+    //main 부분
+    CreateDoc("main", document.body.children[2]);
+    // root이 여러번 필요한게 아니라서 따로 변수선언하지않고 관계로 인식시켜 main생성
+  
+    const main=document.body.children[2].children[0];
+    CommonStyle(main,"500px","500px","","1px dotted black");
+    FlexSet(main);
+
+    //왼쪽 section 부분
+    CreateDoc("section", main,"id","left-sect");
+    const Leftsec=document.getElementById("left-sect");
+    CommonStyle(Leftsec,"200px","450px","","1px solid black");
+    FlexSet(Leftsec);
+
+    //section내 ul 부분
+    CreateDoc("ul", Leftsec);
+    const ul=Leftsec.children[0];
+    ul.style.listStyleType="none";
+
+    //ul내에 li태그 부분 -> 반복적인 5개의 태그 생성을 위해 반복문 이용
+    for(i=0;i<5;i++){
+      CreateDoc("li", ul);
+      ul.children[i].textContent="items-"+[i+1];
+      CommonStyle(ul.children[i],"100%","50px","#fff","1px solid black");
+    }
+
+    //오른쪽 section 부분
+    CreateDoc("section", main,"id","right-sect");
+    CreateDoc("ul", main.children[1]);
+    CommonStyle(main.children[1],"200px","450px","","1px solid blue");
+
+    
+
+  </script>
+</body>
+
+</html>

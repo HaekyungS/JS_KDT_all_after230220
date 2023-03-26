@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+
+    const root = document.getElementById("root");
+    root.style.width = "100vw";
+    root.style.height = "100vh";
+    root.style.backgroundColor = "#555";
+    
+    const makeUl = document.createElement("ul");
+    makeUl.setAttribute('id', "menu");
+    makeUl.style.listStyleType = "none";
+    makeUl.style.display = "flex";
+    makeUl.style.justifyContent = "center";
+    makeUl.style.alignItems = "center";
+    makeUl.style.flexDirection = "column";
+  
+    //학생들 데이터가 없어서 작동 안할거임. 데이터 추가하면 바로 함.
+    for(let i = 0; i < student.length; i++) {
+      let makeLi = document.createElement("li");
+      makeLi.style.color = "#fff";
+      makeLi.textContent = student[i];
+      makeUl.appendChild(makeLi);
+    }
+    root.appendChild(makeUl);
+
+    // //1. for 입문
+    
+    // const styleExample = {
+    //   color: "red",
+    //   backgroundColor: "yellow",
+    //   border: "1px solid black",
+    //   padding: "10px",
+    // }
+
+    // let getKeyString = [];
+    // for (let key in styleExample) {
+    //   getKeyString.push(key);
+    // }
+    // console.log(getKeyString);
+    // for (let i = 0; i < getKeyString.length; i++) {
+    //   console.log(styleExample[getKeyString[i]]);
+    // }
+
+
+    // //2. for문 만으로 작성
+
+    // let exampleKey = ["color", "background", "border"];
+    // let exampleValue = ["red", "yellow", "1px solid black"];
+
+    // let obj = {};
+    // for (let i = 0; i < exampleKey.length; i++) {
+    //   obj[exampleKey[i]] = exampleValue[i];
+    // }
+
+
+
+  </script>
+</body>
+
+</html>
