@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* 
+    #root{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    */
+    /* #root>div:nth-child(1){
+      filter:blur(20[px]);
+      position:absolute;
+    } */
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    function dataFunc(a, b, c, d,) {
+      let obj = {
+        parent: document.querySelector(a),
+        // root 
+        //  main : document.querySelector(b),
+        children1: document.createElement(b),
+
+        children2: document.createElement(c),
+
+        children3: document.createElement(d),
+
+      } // div 3개 생성완료 . 
+      return obj;
+    }
+    let dataForm = dataFunc("#root", "div", "div", "div");
+
+    let root = dataForm.parent;
+    console.dir(root);
+    // let main1 = dataForm.main; 
+    // root.appendChild(main1);
+    let div1 = dataForm.children1;
+    root.appendChild(div1); //루트의 자식 1
+    let div2 = dataForm.children2;
+    root.appendChild(div2);//루트의 자식 2
+    let div3 = dataForm.children3;
+    root.appendChild(div3);//루트의 자식 3 
+
+
+
+    // root.style.width="100vw";
+    // root.style.height="100vh";
+    // root.style.backgroundColor ="cadetblue";
+    // root.style.position="relative";
+
+
+    root.style.cssText = 'background-color:cadetblue; width:100vw; height:100vh; display:flex; justify-content: center; align-items:center; position:relative;'
+    //한번에 가능했구나 
+    // root.style.width="500px";
+    // root.style.height="500px";
+    // root.style.borderRadius="250px";
+    // // root.style.position="absolute";
+    // root.style.opacity="0.8";
+    div1.style.cssText = 'background-color:salmon; margin-top:300px; margin-left:300px; filter:blur(20px); width:500px; height:500px; border-radius: 250px; opacity: 0.8; position:absolute;'
+    // div1.style.backgroundColor="salmon";
+    // document,div1.style.marginTop='300px';
+    // document,div1.style.marginLeft='300px';
+
+    div2.style.cssText = 'background-color:cornflowerblue; margin-top:50px; margin-left:-50px; filter:blur(20px); width:500px; height:500px; border-radius: 250px; opacity: 0.8; position:absolute;'
+    // div2.style.backgroundColor="cornflowerblue";
+    // document,div2.style.marginTop='50px';
+    // document,div2.style.marginLeft='-50px';
+    div3.style.cssText = 'background-color:coral; margin-top:-100px; margin-left:50px; filter:blur(10px); width:500px; height:500px; border-radius: 250px; opacity: 0.8; position:absolute;'
+    // div3.style.backgroundColor="coral"
+    // document,div3.style.marginTop='-100px';
+    // document,div3.style.marginLeft='50px';
+  </script>
+</body>
+
+</html>

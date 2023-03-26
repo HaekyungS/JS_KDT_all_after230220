@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.dir(window)
+    // window.cssText="margin:0; padding:0; box-sizing:border-box;"
+    // document.querySelectorAll("body div").cssText="margin:0; padding:0; box-sizing:border-box;"
+
+    document.body.style.cssText = "margin:0; padding:0; box-sizing:border-box; overflow-x : hidden;";
+    //우선 못찾아서 body에 적용함. => 유니버셜태그는 css의 고유한 능력이라 자스로 안됨.
+    // console.dir(document.querySelectorAll('body div'))
+
+    let StyleList = {
+      Width: ["100vw", "500px"],
+      Height: ["100vh", "500px"],
+      BackgroundColor: ["cadetblue", "salmon", "cornflowerblue", "coral"],
+      Position: ["relative", "absolute"],
+      MarginTop: ["300px", "50px", "-100px"],
+      Marginleft: ["300px", "-50px", "50px"],
+      Filter: ["blur(20px)", "blur(10px)"]
+    }//한번씩만 있는 스타일 빼고 객체로 묶음.
+
+    let root = document.createElement("div");
+    root.setAttribute("id", "root");
+    root.style.cssText = "width:" + StyleList.Width[0] + "; height:" + StyleList.Height[0] + "; background-color:" + StyleList.BackgroundColor[0] + "; display:flex; justify-content:center; align-items:center; position:" + StyleList.Position[0] + ";"
+    document.body.appendChild(root);
+    console.dir(document.body)
+
+    function DivStyle(element) {
+      element.style.width = StyleList.Width[1],
+        element.style.height = StyleList.Height[1],
+        element.style.borderRadius = "250px",
+        element.style.opacity = "0.8",
+        element.style.position = StyleList.Position[1]
+    }//div 들에 공통으로 들어가는 스타일들에 대해서만 함수 생성.
+
+    for (i = 0; i < 3; i++) {
+      let divs = document.createElement("div");
+      // divs.style.cssText="width:500px; height:500px; border-radius:250px; opacity:0.8; position:absolute;";
+      // 이렇게 공통적이었던 건 빼고 각자 세부적인 css text만 if문 안에 적용했더니 if 안의 값만 적용됨.
+      if (i === 0) {//1번째 div
+        divs.style.cssText = "margin-top:" + StyleList.MarginTop[0] + "; margin-left:" + StyleList.Marginleft[0] + "; background-color:" + StyleList.BackgroundColor[1] + "; filter:" + StyleList.Filter[0] + ";";
+
+      } else if (i === 1) {//2번째 div
+        divs.style.cssText = "margin-top:" + StyleList.MarginTop[1] + "; margin-left:" + StyleList.Marginleft[1] + "; background-color:" + StyleList.BackgroundColor[2] + "; filter:" + StyleList.Filter[0] + ";"
+      } else {//3번째 div
+        divs.style.cssText = "margin-top:" + StyleList.MarginTop[2] + "; margin-left:" + StyleList.Marginleft[2] + "; background-color:" + StyleList.BackgroundColor[3] + "; filter:" + StyleList.Filter[1] + ";"
+      }
+
+      DivStyle(divs);
+      root.appendChild(divs);
+
+    }
+
+    // console.dir(root.children[0])
+    let count = 0;
+
+    //아래는 가장 앞에 위치한 div이 root.children[2] 라서 그걸 클릭시 이벤트가 발생하게 만듦.
+    root.addEventListener("click", function () {
+      let rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"];
+      root.style.backgroundColor = rainbow[count];
+      count = count + 1;
+      
+      if (count >= rainbow.length) {
+        count = 0;//만약 색상이 레인보우갯수보다 늘어나면 0으로 리셋
+      }
+
+      if (count % 3 === 0) {
+        root.children[0].style.display = "none";
+        root.children[1].style.display = "none";
+        root.children[2].style.display = "block";
+      }else if(count % 3 === 1){
+        root.children[0].style.display = "none";
+        root.children[1].style.display = "block";
+        root.children[2].style.display = "none";
+      }else{
+        root.children[0].style.display = "block";
+        root.children[1].style.display = "none";
+        root.children[2].style.display = "none";
+      }//누적되서 모든 display가 none으로 가서, 사라지지 않을 div에 display 속성 부여.
+
+    })
+    //배경을 선택하면 앞에 div 2개는 사라지고 하나만 남게 해놓음.
+
+  </script>
+</body>
+
+</html>

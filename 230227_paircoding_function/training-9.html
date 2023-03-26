@@ -1,0 +1,13 @@
+<body>
+  <div id="root"></div>
+  <script>
+    let root = document.getElementById('root');
+    for(let i = 0; i < 3; i++) {
+      let makeDiv = document.createElement('div');
+      makeDiv.textContent = i + "번째 div";
+      root.appendChild(makeDiv);
+    }
+    let rootChilds = root.children;
+    console.log(rootChilds.length);
+  </script>
+</body>

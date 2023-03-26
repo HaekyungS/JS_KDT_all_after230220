@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+    let root = document.getElementById('root');
+    let div = document.getElementsByTagName('div');
+
+    function dataFunc(width, height) {
+      let obj = {
+        widthData: document.querySelector(width),
+        heightData: document.querySelector(height)
+      }
+      return obj
+    }
+    let rootStyle = dataFunc('100vw', '100vh');
+    root = root.style.rootStyle
+    let divStyle = dataFunc('500px', '500px');
+    div = div.style.divStyle;
+
+    function margin(top, left) {
+      let x = top;
+      let y = left;
+      return xpx, ypx;
+    }
+    let divChildOne = margin(300, 300);
+    let divChildTwo = margin(50, 550);
+    let divChileThree = margin(-100, 50);
+
+    function filter(blur) {
+      divChild.style.filter = 'blur(20px)'
+    }
+
+    var divChild = document.getElementsByTagName('div');
+    for (var i = 0; i < divChild.length; i++) {
+      if (i === 0) {
+        divChild[i].style.backgroundColor = 'salmon'; filter();
+      }
+      if (i === 1) {
+        divChild[i].style.backgroundColor = 'cornflowerblue'; filter();
+      }
+      if (i === 2) {
+        divChild[i].style.backgroundColor = 'coral';
+        filter();
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>
