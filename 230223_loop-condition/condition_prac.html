@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="menu">
+    <li>items-1</li>
+    <li>items-2</li>
+    <li>items-3</li>
+    <li>items-4</li>
+    <li>items-5</li>
+  </ul>
+  <script>
+    let menu = document.getElementById('menu');
+    //변수와 구분하기 위해 '' 를 사용하는 것임.
+    console.dir(menu);
+    console.dir(menu.children);//배열
+    console.dir(menu.children[1].style);
+    //여기까진 확인완료.
+    //중간마다 콘솔통해 확인하는게 베스트
+
+    for (let index = 0; index < menu.children.length; index++) {
+      // if(menu.children[index].textContent==="items-3"){
+      if (index === 2) {
+
+        menu.children[index].style.color = "blue"
+        //참(true)구문
+      } else {
+
+        menu.children[index].style.backgroundColor = "gray"
+        //거짓(false)구문
+      }
+    }
+//하나만 외부에서 확인 하고 반복문 굴리는 게 짧게 봐서 더 갠츈
+
+
+    // let menu2=document.getElementsByTagName("ul");
+    // console.log(menu2);
+    // console.dir(menu2);
+    // //함수를 추론할 수 있는 가장 빠른 방법은 위다.
+    // //위에꺼는 세밀하게 나오는데 태그네임은 진짜 말그대로 태그만 불러옴
+
+
+  </script>
+</body>
+
+</html>

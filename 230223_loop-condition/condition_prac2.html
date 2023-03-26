@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let ani = ["디지몬", "헌바헌", "블리치", "체인소맨", "스파패"];
+    let ott = ["넷플릭스", "왓챠", "쿠팡플레이", "디지니플러스", "유튭프리미엄"];
+    let main = document.createElement("div");
+    document.body.appendChild(main);
+    main.setAttribute("id", "root");
+    main.style.cssText = "display:flex; flex-direction:column;height:300px;"
+    //id가 root인 body자식의 div를 만들고, 스타일로 플렉스 를 줌.
+    // console.dir(main.children);
+    //입력값이 ani에 해당하면 오른쪽, ott에 해당하면 왼쪽으로 가게 하고싶음.
+    for (i = 0; i < 2; i++) {
+      let div = document.createElement("div");
+      main.appendChild(div);//#root 자식으로 div 2개 생성.
+      div.style.cssText = "display:flex; width:300px; height:50%;justify-content:center; list-style:none; border:0.5px dotted blue"
+
+      if (i === 0) {
+        for (j = 0; j < 2; j++) {
+          let div = document.createElement("div");
+          main.children[i].appendChild(div);
+          div.style.cssText = "width:50%; text-align:center; border:0.5px dotted blue"
+          //#root>div중 첫번째 div만 자식으로 div2개 추가.
+
+          if (j === 0) {
+            for (r = 0; r < ani.length; r++) {
+              //반복문 안에 같은 기호를 쓰면 꼬일 수 있음.
+              let li = document.createElement("li");
+              main.children[i].children[j].appendChild(li);
+              main.children[i].children[j].children[r].innerHTML = ani[r];
+            }// j===0 이면 애니 배열이 리스트로 작성됨.
+          }
+          else {
+            for (r = 0; r < ott.length; r++) {
+              let li = document.createElement("li");
+              main.children[i].children[j].appendChild(li);
+              main.children[i].children[j].children[r].innerHTML = ott[r];
+            }// j===1 이면 ott 배열이 리스트로 작성됨.
+          }
+
+        }//위에까진 #root>children[0] 의 내용
+      } else {
+        for (i = 0; i < 2 ; i++) {
+          //자식 div 두개 추가.
+          let div = document.createElement("div");
+          root.children[1].appendChild(div);
+          root.children[1].style.flexDirection="column";
+          root.children[1].children[i].style.cssText="width:100%;height:50%; text-align:center; "
+          //2행 사이즈 딱 맞게 쓰려고 css지정
+          if (i === 0) {
+            console.dir(root.children[1].children[i]);
+            let box = document.createElement("input");
+            box.style.cssText = "width:60%; height:15%;"
+            root.children[1].children[i].appendChild(box);
+          }//
+
+        }//입력하면 추가되게 하고 싶긴하당.
+        //입력을 하면 밑에는 ""을 입력하였습니다. 하고 위에 입력된 값이 드가면 좋겠음. => ott[length+1]=inputtext 랄까. 응 음 응 
+        //input value를 변수에 담아 array.push 이용해서 추가.
+        //이거해서 사진도 추가가능할라나
+        console.dir(main.children[i])
+        console.dir(Object.getOwnPropertyDescriptors(ott));
+
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // for(i=0;i<ani.length;i++){
+    //   let li = document.createElement("li");
+    //   document.body.children[1].appendChild(li);
+    // }
+
+
+
+  </script>
+</body>
+
+</html>
