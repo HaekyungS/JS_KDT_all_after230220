@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script>
+    document.body.style.cssText = "width:100vw; height:100vh; margin:0;";
+    // console.dir(document.body);
+
+    let Tag = ["div", "header", "span", "nav", "main", "input"];
+
+    function CreateTag(a, b, c, d, e, f) {
+      let CreateTags = {
+        Div: document.createElement(a),
+        Header: document.createElement(b),
+        Span: document.createElement(c),
+        Nav: document.createElement(d),
+        Main: document.createElement(e),
+        Input: document.createElement(f)
+      }
+      return CreateTags;
+    }
+
+    let TagsForm=CreateTag(Tag[0],Tag[1],Tag[2],Tag[3],Tag[4],Tag[5]);
+    // console.log(TagsForm.Div);
+    
+    let div = TagsForm.Div;
+    div.style.cssText = "width:100%; height:100%; background-color:#F8E0F7; display:flex; justify-content:center;";
+    document.body.appendChild(div);
+    // console.log(div);
+    
+    let divChild = document.createElement("div");
+    divChild.style.cssText = "width:260px; height:400px; border:1px solid pink";
+    div.appendChild(divChild);
+    // // console.dir(divChild)
+    // // div가 왜 안될까
+
+    let header = TagsForm.Header;
+    header.style.cssText = "width:100%; height:15%; display:flex; justify-content:center;";
+    divChild.appendChild(header);
+
+    let span = TagsForm.Span;
+    span.style.cssText = "height:50%; width:80%; margin:auto; text-align:right; background-color:pink; font-family:'Shantell Sans';"
+    header.appendChild(span);
+
+    let nav = TagsForm.Nav;
+    nav.style.cssText = "width:100%; height:10%; display:flex; justify-content:center; padding:auto;";
+    divChild.append(nav);
+// 여기까진 이상 없음.
+//이 밑에 input 이 두군데에 들어가는데 여기가 오류. 
+//input 함수에 문제있넹
+//일단 input은 함수를 뺐는데 원인 찾기
+    let OperationsOfMath = ["+", "-", "*", "%"];
+
+    for (i = 0; i < OperationsOfMath.length; i++) {
+      let input = document.createElement("input");
+      input.setAttribute("type", "button");
+      input.setAttribute("value", OperationsOfMath[i])
+      input.style.cssText = "width:20%; height:80%; text-align:center; font-family:'Shantell Sans'; margin:auto; border:0.5px";
+      input.innerHTML = OperationsOfMath[i];
+      nav.append(input);
+      console.dir(input);
+      //콘솔 찍어보니까 다 리셋으로 뜨넹
+    }
+    //if 로 마지막에 input을 나가기 전에 바꿔줘야하나.
+
+    let main = TagsForm.Main;
+    main.style.cssText = "width:100%; height:75%; display:flex; justify-content:center; font-family:'Shantell Sans'; flex-wrap: wrap;"
+    divChild.append(main);
+    // 정렬에 문제있음. 수정필요 => 인풋들이 inline-block으로 되있어서 정렬이 안되는 거였고, flex로 바꿔주고 wrap 설정해서 사이즈 넘어가면 다음줄로 정렬되게 함.
+    for (j = 0; j < 12; j++) {
+      let InputNumber = document.createElement("input")
+      InputNumber.style.cssText = "height:25%; width:30%; margin:0; display:flex; text-align:center; font-family:'Shantell Sans'; border:0.5px"
+      // InputNumber.setAttribute("onclick", "multiple()");
+
+      if (j === 11) {
+        InputNumber.setAttribute("type", "button");
+        InputNumber.setAttribute("value", "reset"); //초기화버튼
+      } else if (j === 10) {
+        InputNumber.setAttribute("type", "button");
+        InputNumber.setAttribute("value", "0");
+      } else if (j === 9) {
+        InputNumber.setAttribute("type", "button");
+        InputNumber.setAttribute("value", "=");
+      } else {
+        InputNumber.setAttribute("type", "button");
+        InputNumber.setAttribute("value", [j + 1]);
+        //j랑 순서가 +1씩 되어야하니까.
+      }
+      main.appendChild(InputNumber);
+    }
+    // onclick event로 하면 될거같은데 온클릭한 값이 숫자면 화면에 띄워주고, 연산기호 누르면 자동으로 다음 값을 입력해서 = 을 입력하면 계산되어 나오게.
+    divChild.addEventListener("click", function () {
+      let value = 0;
+      let inputNumber;
+
+      inputNumber = [j + 1]; //j가 이미 12로 끝났으니까 13만 출력됨.
+      inputNumber = Number(inputNumber);
+      span.innerHTML = value + inputNumber; //클릭하면 출력까진 됨. 근데 j를 어캐해야 값을 담으까
+      console.log(value + inputNumber)
+    })
+
+    // 순서대로 따져보면 1. 숫자를 누르면 span에 누른 값이 떠야함.
+    // 근데 만약 숫자를 두개를 누르면 그 두개를 문자로써 합친 값이 숫자로 나와야함.
+    // 2. 처음 누른 숫자 이후 연산기호를 누르면 그 연산을 해야함.
+    // 3. 연산기호 클릭 이후 눌린 숫자를 또 담아줘서 처음 누른 숫자와 연산기호 뒤에 누른 숫자에 대한 해당 연산값이 결과값으로 출력되야함.
+    // 4. 결과값은 =을 누른 시점에 나와야함.
+    // 5. reset 버튼을 누르면 초기화가 진행되야함.
+
+
+
+  </script>
+</body>
+
+</html>
